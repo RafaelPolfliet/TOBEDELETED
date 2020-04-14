@@ -1,0 +1,22 @@
+<h1><%= gettext "Animals"%></h1>
+<aside id="clock"></aside>
+<table>
+  <thead>
+    <tr>
+      <th><%= gettext "Name"%></th>
+      <th><%= gettext "Date Of Birth"%></th>
+      <th><%= gettext "Type"%></th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for animal <- @animals do %>
+    <tr>
+      <td><%= animal.name %></td>
+      <td><%= animal.date_of_birth %></td>
+      <td><%= animal.type %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

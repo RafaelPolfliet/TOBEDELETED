@@ -1,0 +1,77 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: nl\n"
+"Plural-Forms: nplurals=2\n"
+
+#, elixir-format
+#: lib/project_web/templates/animal/show.html.eex:11
+msgid "Date of birth:"
+msgstr "Geboortedatum:"
+
+#, elixir-format
+#: lib/project_web/templates/animal/show.html.eex:6
+msgid "Name:"
+msgstr "Naam:"
+
+#, elixir-format
+#: lib/project_web/templates/animal/show.html.eex:16
+msgid "Type:"
+msgstr "Type:"
+
+#, elixir-format
+#: lib/project_web/templates/page/index.html.eex:2
+msgid "Welcome to %{name}!"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/templates/layout/app.html.eex:22
+msgid "Login"
+msgstr "Inloggen"
+
+#, elixir-format
+#: lib/project_web/templates/layout/app.html.eex:17
+msgid "My Profile"
+msgstr "Mijn Profiel"
+
+#, elixir-format
+#: lib/project_web/templates/layout/app.html.eex:16
+msgid "Overview"
+msgstr "Overzicht"
+
+#, elixir-format
+#: lib/project_web/templates/layout/app.html.eex:24
+msgid "User Management"
+msgstr "Gebruikersbeheer"
+
+#, elixir-format
+#: lib/project_web/templates/animal/index.html.eex:1
+msgid "Animals"
+msgstr "Dieren"
+
+#, elixir-format
+#: lib/project_web/templates/animal/index.html.eex:7
+msgid "Date Of Birth"
+msgstr "Geboortedatum"
+
+#, elixir-format
+#: lib/project_web/templates/animal/index.html.eex:8
+msgid "Type"
+msgstr "Type"
+
+#, elixir-format
+#: lib/project_web/templates/animal/index.html.eex:6
+msgid "Name"
+msgstr "Naam"
+
+#, elixir-format
+#: lib/project_web/templates/layout/app.html.eex:19
+msgid "Logout"
+msgstr "Uitloggen"

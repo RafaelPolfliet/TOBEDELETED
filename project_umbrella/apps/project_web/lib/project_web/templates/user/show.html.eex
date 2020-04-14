@@ -1,0 +1,13 @@
+<h1>Show User</h1>
+ 
+ <section>
+
+ <p>
+    <strong>Username:</strong>
+    <%= @user.username %>
+</p>
+<p>
+    <a href="/change_username"><%= gettext "Change Username" %></a>
+    <a href="/change_password"><%= gettext "Change Password" %></a>
+</p>
+</section>
