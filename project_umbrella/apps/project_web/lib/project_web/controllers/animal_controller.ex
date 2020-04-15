@@ -6,17 +6,20 @@ defmodule ProjectWeb.AnimalController do
   alias Project.UserContext
 
 
-  def index(conn, _params) do
+  def index_web(conn, _params) do
     user = Guardian.Plug.current_resource(conn)
     userWithAnimals = AnimalContext.load_users_animals(user)
     animals = userWithAnimals.animals
     render(conn, "index.html", animals: animals)
   end
-"""
-  def new(conn, _params) do
-    changeset = AnimalContext.change_animal(%Animal{})
-    render(conn, "new.html", changeset: changeset)
+
+  def index(conn, %{"user_id" => user_id}) do
+    user = UserContext.get_user!(user_id)
+    userWithAnimals = AnimalContext.load_users_animals(user)
+    animals = userWithAnimals.animals
+    render(conn, "index.json", animals: animals)
   end
+
 
   def create(conn, %{"user_id" => user_id,"animal" => animal_params}) do
 
@@ -25,23 +28,19 @@ defmodule ProjectWeb.AnimalController do
     case AnimalContext.create_animal(animal_params,user) do
       {:ok, animal} ->
         conn
-        |> put_flash(:info, "Animal created successfully.")
-        |> redirect(to: Routes.animal_path(conn, :show, animal))
+          |> put_status(:created)
+          |> put_resp_header("location", Routes.user_animal_path(conn,:show,user_id,animal))
+          |> render("show.json",animal: animal)
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+      {:error, _} ->
+        conn
+        |> send_resp(400,  "Invalid api-request, adjust your parameters. Know that only animals of type 'Cat' or 'Dog' are allowed")
     end
   end
 
   def show(conn, %{"id" => id}) do
     animal = AnimalContext.get_animal!(id)
-    render(conn, "show.html", animal: animal)
-  end
-
-  def edit(conn, %{"id" => id}) do
-    animal = AnimalContext.get_animal!(id)
-    changeset = AnimalContext.change_animal(animal)
-    render(conn, "edit.html", animal: animal, changeset: changeset)
+    render(conn, "show.json", animal: animal)
   end
 
   def update(conn, %{"id" => id, "animal" => animal_params}) do
@@ -49,22 +48,20 @@ defmodule ProjectWeb.AnimalController do
 
     case AnimalContext.update_animal(animal, animal_params) do
       {:ok, animal} ->
-        conn
-        |> put_flash(:info, "Animal updated successfully.")
-        |> redirect(to: Routes.animal_path(conn, :show, animal))
+        render(conn,"show.json",animal: animal)
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", animal: animal, changeset: changeset)
+      {:error,_} ->
+        conn
+        |> send_resp(400,  "Invalid api-request, adjust your parameters. Know that only animals of type 'Cat' or 'Dog' are allowed")
     end
   end
 
   def delete(conn, %{"id" => id}) do
     animal = AnimalContext.get_animal!(id)
-    {:ok, _animal} = AnimalContext.delete_animal(animal)
 
-    conn
-    |> put_flash(:info, "Animal deleted successfully.")
-    |> redirect(to: Routes.animal_path(conn, :index))
+    with {:ok, %Animal{}} <- AnimalContext.delete_animal(animal) do
+      send_resp(conn, :no_content, "")
+    end
   end
-"""
+
 end

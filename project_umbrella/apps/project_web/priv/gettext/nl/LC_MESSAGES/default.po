@@ -86,6 +86,7 @@ msgstr "Gebruikersnaam aanpassen"
 
 #, elixir-format
 #: lib/project_web/templates/session/new.html.eex:22
+#: lib/project_web/templates/user/new.html.eex:1
 msgid "Sign Up"
 msgstr "Registreren"
 
@@ -109,7 +110,32 @@ msgstr "Project door %{name}"
 msgid "Login Page"
 msgstr "Inloggen"
 
-#, elixir-format, fuzzy
+#, elixir-format
 #: lib/project_web/templates/user/show.html.eex:6
 msgid "Username:"
 msgstr "Gebruikersnaam:"
+
+#, elixir-format
+#: lib/project_web/templates/user/show.html.eex:38
+msgid "API-Key"
+msgstr "API-Sleutel"
+
+#, elixir-format
+#: lib/project_web/templates/user/new.html.eex:6
+msgid "Something went wrong! Please check the error messages below!"
+msgstr "Iets ging fout! Gelieve de onderstaande foutmeldingen te controleren!"
+
+#, elixir-format
+#: lib/project_web/templates/user/show.html.eex:29
+msgid "Generate"
+msgstr "Aanmaken"
+
+#, elixir-format
+#: lib/project_web/templates/user/show.html.eex:54
+msgid "Your personal api-link: "
+msgstr "Uw persoonlijke API-Link"
+
+#, elixir-format
+#: lib/project_web/templates/user/new.html.eex:26
+msgid "Confirm"
+msgstr "Bevestigen"

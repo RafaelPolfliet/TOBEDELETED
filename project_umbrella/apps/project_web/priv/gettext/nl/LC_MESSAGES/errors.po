@@ -85,3 +85,9 @@ msgstr "Moet groter dan of gelijk zijn aan %{number}"
 
 msgid "must be equal to %{number}"
 msgstr "Moet gelijk zijn aan %{number}"
+
+msgid "Passwords do not match"
+msgstr "Wachtwoorden komen niet overeen"
+
+msgid "API-Key needs a name"
+msgstr "API-Sleutel moet een naam krijgen"

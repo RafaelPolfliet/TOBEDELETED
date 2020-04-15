@@ -26,6 +26,10 @@ defmodule ProjectWeb.Router do
     plug Guardian.Plug.EnsureAuthenticated
   end
 
+  pipeline :api_auth do
+    plug ProjectWeb.Plugs.ApiKeyPlug
+  end
+
 
   pipeline :api do
     plug :accepts, ["json"]
@@ -48,10 +52,14 @@ defmodule ProjectWeb.Router do
   scope "/", ProjectWeb do
     pipe_through [:browser, :auth, :ensure_auth, :allowed_for_users]
 
-    get "/dashboard", AnimalController, :index
+    get "/dashboard", AnimalController, :index_web
     get "/profile", UserController, :show
     get "/change_username/:id", UserController, :edit
     put "/change_username", UserController, :update
+    post "/newApiKey", ApiController, :create
+    get "/profile/apikeys/:id",ApiController, :show
+    delete "/profile/apikeys/:id",ApiController, :delete
+    get "/verfiy/:user_id/:key_id",ApiController, :verify
   end
 
   scope "/", ProjectWeb do
@@ -64,11 +72,11 @@ defmodule ProjectWeb.Router do
   end
 
   scope "/api", ProjectWeb do
-    pipe_through :api
+    pipe_through [:api, :api_auth]
 
 
     resources "/users", UserController, only: [] do
-      resources "/animals", AnimalController
+      resources "/animals", AnimalController, only: [:index,:show,:create,:update,:delete]
     end
   end
 

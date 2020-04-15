@@ -95,3 +95,9 @@ msgstr ""
 
 msgid "must be equal to %{number}"
 msgstr ""
+
+msgid "Passwords do not match"
+msgstr ""
+
+msgid "API-Key needs a name"
+msgstr ""

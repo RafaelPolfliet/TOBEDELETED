@@ -13,6 +13,7 @@ defmodule ProjectWeb.Plugs.AuthorizationPlug do
     def grant_access(conn, true), do: conn
   
     def grant_access(conn, false) do
+      IO.puts("test")
       conn
       |> Controller.put_flash(:error, "Unauthorized access")
       |> Controller.redirect(to: "/")

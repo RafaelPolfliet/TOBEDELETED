@@ -11,3 +11,44 @@
     <a href="/change_password"><%= gettext "Change Password" %></a>
 </p>
 </section>
+<section>
+
+<%= form_for @changeset,Routes.api_path(@conn, :create), fn f -> %>
+<%= if @changeset.action do %>
+<div class="alert alert-danger">
+  <p>Oops, something went wrong! Please check the errors below.</p>
+</div>
+<% end %>
+
+<%= label f, :name %>
+<%= text_input f, :name %>
+<%= error_tag f, :name %>
+
+<div>
+  <%= submit gettext "Generate" %>
+</div>
+<% end %>
+</section>
+<section>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= gettext "API-Key" %></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for api <- @user.apis do %>
+    <tr>
+      <td><%= api.name %></td>
+      <td>
+          <span><%= link "Show", to: Routes.api_path(@conn, :show, api) %></span><span> --</span>
+          <span><%= link "Revoke", to: Routes.api_path(@conn, :delete, api), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+  </table>
+
+   <span><%= gettext "Your personal api-link: "%><%= link "localhost:4000/api/users/#{@user.id}/animals", to: Routes.user_animal_path(@conn, :index, @user) %></span>
+</section>

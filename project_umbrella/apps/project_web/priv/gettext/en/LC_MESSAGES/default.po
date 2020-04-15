@@ -86,6 +86,7 @@ msgstr ""
 
 #, elixir-format
 #: lib/project_web/templates/session/new.html.eex:22
+#: lib/project_web/templates/user/new.html.eex:1
 msgid "Sign Up"
 msgstr ""
 
@@ -109,7 +110,32 @@ msgstr ""
 msgid "Login Page"
 msgstr ""
 
-#, elixir-format, fuzzy
+#, elixir-format
 #: lib/project_web/templates/user/show.html.eex:6
 msgid "Username:"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/templates/user/show.html.eex:38
+msgid "API-Key"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/templates/user/new.html.eex:6
+msgid "Something went wrong! Please check the error messages below!"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/templates/user/show.html.eex:29
+msgid "Generate"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/templates/user/show.html.eex:54
+msgid "Your personal api-link: "
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/templates/user/new.html.eex:26
+msgid "Confirm"
 msgstr ""

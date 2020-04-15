@@ -3,6 +3,8 @@ defmodule ProjectWeb.UserController do
 
   alias Project.UserContext
   alias Project.UserContext.User
+  alias Project.APIContext.Api
+  alias Project.APIContext
 
 
   def login(conn, _params) do
@@ -33,10 +35,15 @@ defmodule ProjectWeb.UserController do
     end
   end
 
+  
+
   def show(conn, _params) do
     user = Guardian.Plug.current_resource(conn)
-    render(conn, "show.html", user: user)
+    user = APIContext.load_users_apis(user)
+    changeset = APIContext.change_api(%Api{})
+    render(conn, "show.html", user: user,changeset: changeset)
   end
+
 
   def edit(conn, %{"id" => id}) do
     user = UserContext.get_user!(id)
