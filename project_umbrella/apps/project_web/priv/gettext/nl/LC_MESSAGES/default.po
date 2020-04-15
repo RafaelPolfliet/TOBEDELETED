@@ -28,6 +28,7 @@ msgstr "Type:"
 
 #, elixir-format
 #: lib/project_web/templates/layout/app.html.eex:22
+#: lib/project_web/templates/session/new.html.eex:18
 msgid "Login"
 msgstr "Inloggen"
 
@@ -65,6 +66,7 @@ msgstr "Type"
 
 #, elixir-format
 #: lib/project_web/templates/animal/index.html.eex:6
+#: lib/project_web/templates/user/show.html.eex:18
 msgid "Name"
 msgstr "Naam"
 
@@ -91,7 +93,8 @@ msgid "Sign Up"
 msgstr "Registreren"
 
 #, elixir-format
-#: lib/project_web/templates/user/index.html.eex:6
+#: lib/project_web/templates/session/new.html.eex:6
+#: lib/project_web/templates/user/index.html.eex:6 lib/project_web/templates/user/new.html.eex:11
 msgid "Username"
 msgstr "Gebruikersnaam"
 
@@ -116,7 +119,7 @@ msgid "Username:"
 msgstr "Gebruikersnaam:"
 
 #, elixir-format
-#: lib/project_web/templates/user/show.html.eex:38
+#: lib/project_web/templates/user/show.html.eex:32
 msgid "API-Key"
 msgstr "API-Sleutel"
 
@@ -126,12 +129,12 @@ msgid "Something went wrong! Please check the error messages below!"
 msgstr "Iets ging fout! Gelieve de onderstaande foutmeldingen te controleren!"
 
 #, elixir-format
-#: lib/project_web/templates/user/show.html.eex:29
+#: lib/project_web/templates/user/show.html.eex:23
 msgid "Generate"
 msgstr "Aanmaken"
 
 #, elixir-format
-#: lib/project_web/templates/user/show.html.eex:54
+#: lib/project_web/templates/user/show.html.eex:48
 msgid "Your personal api-link: "
 msgstr "Uw persoonlijke API-Link"
 
@@ -139,3 +142,75 @@ msgstr "Uw persoonlijke API-Link"
 #: lib/project_web/templates/user/new.html.eex:26
 msgid "Confirm"
 msgstr "Bevestigen"
+
+#, elixir-format
+#: lib/project_web/templates/user/new.html.eex:20
+msgid "Confirm password"
+msgstr "Bevestig Wachtwoord"
+
+#, elixir-format
+#: lib/project_web/templates/session/new.html.eex:12
+#: lib/project_web/templates/user/new.html.eex:15
+msgid "Password"
+msgstr "Wachtwoord"
+
+#, elixir-format
+#: lib/project_web/templates/user/index.html.eex:20
+msgid "Delete"
+msgstr "Verwijder"
+
+#, elixir-format
+#: lib/project_web/templates/user/index.html.eex:19
+msgid "Edit"
+msgstr "Wijzigen"
+
+#, elixir-format
+#: lib/project_web/templates/user/show.html.eex:41
+msgid "Revoke"
+msgstr "Intrekken"
+
+#, elixir-format
+#: lib/project_web/templates/user/show.html.eex:40
+msgid "Show"
+msgstr "Tonen"
+
+#, elixir-format
+#: lib/project_web/controllers/user_controller.ex:30
+msgid "Your registration was succesfull - Please login"
+msgstr "Uw registratie was succesvol - Gelieve in te loggen"
+
+#, elixir-format
+#: lib/project_web/controllers/api_controller.ex:14
+msgid "API-Key created successfully."
+msgstr "API-Sleut succesvol aangemaakt"
+
+#, elixir-format
+#: lib/project_web/controllers/api_controller.ex:19
+msgid "API-Key needs a name"
+msgstr "API-Sleutel moet een naam hebben"
+
+#, elixir-format
+#: lib/project_web/controllers/api_controller.ex:38
+msgid "API-Key succesfully revoked"
+msgstr "API-Sleutel succesvol ingetrokken"
+
+#, elixir-format
+#: lib/project_web/controllers/session_controller.ex:32
+msgid "Welcome back!"
+msgstr "Welkom terug!"
+
+#, elixir-format
+#: lib/project_web/controllers/user_controller.ex:73
+msgid "User deleted successfully."
+msgstr "Gebruiker succesvol verwijderd."
+
+#, elixir-format
+#: lib/project_web/controllers/user_controller.ex:60
+msgid "User updated successfully."
+msgstr "Gebruiker succesvol aangepast."
+
+#, elixir-format
+#: lib/project_web/guardian/errorhandler.ex:11
+#: lib/project_web/plugs/authorization_plug.ex:19
+msgid "Unauthorized access"
+msgstr "Toegang geweigerd"

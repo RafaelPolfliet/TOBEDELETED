@@ -14,13 +14,8 @@
 <section>
 
 <%= form_for @changeset,Routes.api_path(@conn, :create), fn f -> %>
-<%= if @changeset.action do %>
-<div class="alert alert-danger">
-  <p>Oops, something went wrong! Please check the errors below.</p>
-</div>
-<% end %>
 
-<%= label f, :name %>
+<%= label f, gettext "Name" %>
 <%= text_input f, :name %>
 <%= error_tag f, :name %>
 
@@ -42,8 +37,8 @@
     <tr>
       <td><%= api.name %></td>
       <td>
-          <span><%= link "Show", to: Routes.api_path(@conn, :show, api) %></span><span> --</span>
-          <span><%= link "Revoke", to: Routes.api_path(@conn, :delete, api), method: :delete, data: [confirm: "Are you sure?"] %></span>
+          <span><%= link (gettext "Show") , to: Routes.api_path(@conn, :show, api) %></span><span> --</span>
+          <span><%= link (gettext "Revoke"), to: Routes.api_path(@conn, :delete, api), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
 <% end %>

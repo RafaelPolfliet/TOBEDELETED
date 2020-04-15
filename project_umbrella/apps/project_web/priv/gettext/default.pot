@@ -27,6 +27,7 @@ msgstr ""
 
 #, elixir-format
 #: lib/project_web/templates/layout/app.html.eex:22
+#: lib/project_web/templates/session/new.html.eex:18
 msgid "Login"
 msgstr ""
 
@@ -64,6 +65,7 @@ msgstr ""
 
 #, elixir-format
 #: lib/project_web/templates/animal/index.html.eex:6
+#: lib/project_web/templates/user/show.html.eex:18
 msgid "Name"
 msgstr ""
 
@@ -90,7 +92,8 @@ msgid "Sign Up"
 msgstr ""
 
 #, elixir-format
-#: lib/project_web/templates/user/index.html.eex:6
+#: lib/project_web/templates/session/new.html.eex:6
+#: lib/project_web/templates/user/index.html.eex:6 lib/project_web/templates/user/new.html.eex:11
 msgid "Username"
 msgstr ""
 
@@ -115,7 +118,7 @@ msgid "Username:"
 msgstr ""
 
 #, elixir-format
-#: lib/project_web/templates/user/show.html.eex:38
+#: lib/project_web/templates/user/show.html.eex:32
 msgid "API-Key"
 msgstr ""
 
@@ -125,16 +128,88 @@ msgid "Something went wrong! Please check the error messages below!"
 msgstr ""
 
 #, elixir-format
-#: lib/project_web/templates/user/show.html.eex:29
+#: lib/project_web/templates/user/show.html.eex:23
 msgid "Generate"
 msgstr ""
 
 #, elixir-format
-#: lib/project_web/templates/user/show.html.eex:54
+#: lib/project_web/templates/user/show.html.eex:48
 msgid "Your personal api-link: "
 msgstr ""
 
 #, elixir-format
 #: lib/project_web/templates/user/new.html.eex:26
 msgid "Confirm"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/templates/user/new.html.eex:20
+msgid "Confirm password"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/templates/session/new.html.eex:12
+#: lib/project_web/templates/user/new.html.eex:15
+msgid "Password"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/templates/user/index.html.eex:20
+msgid "Delete"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/templates/user/index.html.eex:19
+msgid "Edit"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/templates/user/show.html.eex:41
+msgid "Revoke"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/templates/user/show.html.eex:40
+msgid "Show"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/controllers/user_controller.ex:30
+msgid "Your registration was succesfull - Please login"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/controllers/api_controller.ex:14
+msgid "API-Key created successfully."
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/controllers/api_controller.ex:19
+msgid "API-Key needs a name"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/controllers/api_controller.ex:38
+msgid "API-Key succesfully revoked"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/controllers/session_controller.ex:32
+msgid "Welcome back!"
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/controllers/user_controller.ex:73
+msgid "User deleted successfully."
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/controllers/user_controller.ex:60
+msgid "User updated successfully."
+msgstr ""
+
+#, elixir-format
+#: lib/project_web/guardian/errorhandler.ex:11
+#: lib/project_web/plugs/authorization_plug.ex:19
+msgid "Unauthorized access"
 msgstr ""

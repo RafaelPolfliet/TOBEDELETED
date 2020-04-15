@@ -16,8 +16,8 @@
       <td><%= user.role %></td>
 
       <td>
-          <span><%= link "Edit", to: Routes.user_path(@conn, :edit, user) %></span>
-          <span><%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
+          <span><%= link (gettext "Edit"), to: Routes.user_path(@conn, :edit, user) %></span>
+          <span><%= link (gettext "Delete"), to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
 <% end %>

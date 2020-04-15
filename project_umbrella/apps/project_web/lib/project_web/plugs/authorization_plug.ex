@@ -2,6 +2,7 @@ defmodule ProjectWeb.Plugs.AuthorizationPlug do
     import Plug.Conn
     alias Project.UserContext.User
     alias Phoenix.Controller
+    import ProjectWeb.Gettext
   
     def init(options), do: options
   
@@ -15,7 +16,7 @@ defmodule ProjectWeb.Plugs.AuthorizationPlug do
     def grant_access(conn, false) do
       IO.puts("test")
       conn
-      |> Controller.put_flash(:error, "Unauthorized access")
+      |> Controller.put_flash(:error, gettext "Unauthorized access")
       |> Controller.redirect(to: "/")
       |> halt
     end

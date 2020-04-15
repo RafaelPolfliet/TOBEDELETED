@@ -29,14 +29,14 @@ defmodule ProjectWeb.SessionController do
 
   defp login_reply({:ok, user}, conn) do
     conn
-    |> put_flash(:info, "Welcome back!")
+    |> put_flash(:info, gettext "Welcome back!")
     |> Guardian.Plug.sign_in(user)
     |> redirect(to: "/dashboard")
   end
 
   defp login_reply({:error, reason}, conn) do
     conn
-    |> put_flash(:error, to_string(reason))
+    |> put_flash(:error, Gettext.gettext(ProjectWeb.Gettext, reason))
     |> new(%{})
   end
 end

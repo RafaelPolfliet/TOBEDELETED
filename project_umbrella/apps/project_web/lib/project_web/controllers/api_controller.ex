@@ -11,12 +11,12 @@ defmodule ProjectWeb.ApiController do
         case APIContext.create_api(api_params,user) do
           {:ok, _user} ->
             conn
-            |> put_flash(:info, "API-Key created successfully.")
+            |> put_flash(:info, gettext "API-Key created successfully.")
             |> redirect(to: Routes.user_path(conn,:show))
     
           {:error, _} ->
             conn
-            |> put_flash(:error, "API-Key needs a name")
+            |> put_flash(:error, gettext "API-Key needs a name")
             |> redirect(to: Routes.user_path(conn,:show))
 
           end
@@ -35,7 +35,7 @@ defmodule ProjectWeb.ApiController do
       {:ok, _user} = APIContext.delete_api(api)
   
       conn
-      |> put_flash(:info, "API-Key succesfully revoked")
+      |> put_flash(:info, gettext "API-Key succesfully revoked")
       |> redirect(to: Routes.user_path(conn, :show))
     end
 

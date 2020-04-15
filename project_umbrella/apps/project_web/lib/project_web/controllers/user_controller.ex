@@ -27,7 +27,7 @@ defmodule ProjectWeb.UserController do
     case UserContext.create_user(user_params) do
       {:ok, _user} ->
         conn
-        |> put_flash(:info, "User created successfully.")
+        |> put_flash(:info, gettext "Your registration was succesfull - Please login")
         |> redirect(to: Routes.session_path(conn,:login))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -57,7 +57,7 @@ defmodule ProjectWeb.UserController do
     case UserContext.update_user(user, user_params) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "User updated successfully.")
+        |> put_flash(:info, gettext "User updated successfully.")
         |> redirect(to: Routes.user_path(conn, :show, user))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -70,7 +70,7 @@ defmodule ProjectWeb.UserController do
     {:ok, _user} = UserContext.delete_user(user)
 
     conn
-    |> put_flash(:info, "User deleted successfully.")
+    |> put_flash(:info, gettext "User deleted successfully.")
     |> redirect(to: Routes.user_path(conn, :index))
   end
 end
