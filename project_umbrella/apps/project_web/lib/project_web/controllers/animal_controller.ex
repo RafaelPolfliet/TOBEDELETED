@@ -3,19 +3,26 @@ defmodule ProjectWeb.AnimalController do
 
   alias Project.AnimalContext
   alias Project.AnimalContext.Animal
+  alias Project.UserContext
+
 
   def index(conn, _params) do
-    animals = AnimalContext.list_animals()
+    user = Guardian.Plug.current_resource(conn)
+    userWithAnimals = AnimalContext.load_users_animals(user)
+    animals = userWithAnimals.animals
     render(conn, "index.html", animals: animals)
   end
-
+"""
   def new(conn, _params) do
     changeset = AnimalContext.change_animal(%Animal{})
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"animal" => animal_params}) do
-    case AnimalContext.create_animal(animal_params) do
+  def create(conn, %{"user_id" => user_id,"animal" => animal_params}) do
+
+    user = UserContext.get_user!(user_id)
+
+    case AnimalContext.create_animal(animal_params,user) do
       {:ok, animal} ->
         conn
         |> put_flash(:info, "Animal created successfully.")
@@ -59,4 +66,5 @@ defmodule ProjectWeb.AnimalController do
     |> put_flash(:info, "Animal deleted successfully.")
     |> redirect(to: Routes.animal_path(conn, :index))
   end
+"""
 end

@@ -9,9 +9,9 @@ defmodule ProjectWeb.UserController do
     render(conn, "login.html")
   end
 
-
   def index(conn, _params) do
     users = UserContext.list_users()
+    
     render(conn, "index.html", users: users)
   end
 
@@ -23,10 +23,10 @@ defmodule ProjectWeb.UserController do
 
   def create(conn, %{"user" => user_params}) do
     case UserContext.create_user(user_params) do
-      {:ok, user} ->
+      {:ok, _user} ->
         conn
         |> put_flash(:info, "User created successfully.")
-        |> redirect(to: "/login")
+        |> redirect(to: Routes.session_path(conn,:login))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -39,7 +39,7 @@ defmodule ProjectWeb.UserController do
   end
 
   def edit(conn, %{"id" => id}) do
-    user = UserContext.get_user(id)
+    user = UserContext.get_user!(id)
     changeset = UserContext.change_user(user)
     render(conn, "edit.html", user: user, changeset: changeset)
   end

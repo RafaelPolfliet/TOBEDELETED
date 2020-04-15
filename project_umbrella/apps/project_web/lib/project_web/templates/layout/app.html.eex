@@ -21,10 +21,10 @@
                <%= unless  Guardian.Plug.authenticated?(@conn, [])  do%>
                      <li><a href="/login"><%= gettext "Login"%></a></li>
                <%end%>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html"><%= gettext "User Management"%></a></li>
+            <li><a href="/usermanagement"><%= gettext "User Management"%></a></li>
           </ul>
         </nav>
-        <aside>Project of Rafael Polfliet</aside> 
+        <aside><%= gettext "Project by %{name}", name: "Rafael Polfliet" %></aside> 
        <ul>
         <li><%= new_locale @conn, :en, "English" %></li>
         <li><%= new_locale @conn, :nl, "Nederlands" %></li>

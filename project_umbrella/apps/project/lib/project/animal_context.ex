@@ -7,6 +7,7 @@ defmodule Project.AnimalContext do
   alias Project.Repo
 
   alias Project.AnimalContext.Animal
+  alias Project.UserContext.User
 
   @doc """
   Returns the list of animals.
@@ -17,6 +18,13 @@ defmodule Project.AnimalContext do
       [%Animal{}, ...]
 
   """
+
+
+
+  def load_users_animals(%User{} = u) do
+     u
+     |> Repo.preload([:animals])
+  end
 
   defdelegate get_acceptable_types(), to: Animal
 
@@ -52,9 +60,9 @@ defmodule Project.AnimalContext do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_animal(attrs \\ %{}) do
+  def create_animal(attrs, %User{} = user) do
     %Animal{}
-    |> Animal.changeset(attrs)
+    |> Animal.changeset(attrs,user)
     |> Repo.insert()
   end
 

@@ -12,76 +12,76 @@ msgstr ""
 "Plural-Forms: nplurals=2\n"
 
 msgid "can't be blank"
-msgstr ""
+msgstr "Mag niet leeg zijn"
 
 msgid "has already been taken"
-msgstr ""
+msgstr "Is reeds genomen"
 
 msgid "is invalid"
-msgstr ""
+msgstr "Ongeldig"
 
 msgid "must be accepted"
-msgstr ""
+msgstr "Moet geaccepteerd worden"
 
 msgid "has invalid format"
-msgstr ""
+msgstr "Ongeldig formaat"
 
 msgid "has an invalid entry"
-msgstr ""
+msgstr "Bevat een ongeldig ingave"
 
 msgid "is reserved"
-msgstr ""
+msgstr "Is gereserveerd"
 
 msgid "does not match confirmation"
-msgstr ""
+msgstr "Komt niet overeen met bevestiging"
 
 msgid "is still associated with this entry"
-msgstr ""
+msgstr "Is nog steeds geassocieerd met deze entry"
 
 msgid "are still associated with this entry"
-msgstr ""
+msgstr "Zijn nog steeds geassocieerd met deze entries"
 
 msgid "should be %{count} character(s)"
 msgid_plural "should be %{count} character(s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Moet %{count} karakter(s) lang zijn"
+msgstr[1] "Moet %{count} karakter(s) lang zijn"
 
 msgid "should have %{count} item(s)"
 msgid_plural "should have %{count} item(s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Moet %{count} item(s) hebben"
+msgstr[1] "Moet %{count} item(s) hebben"
 
 msgid "should be at least %{count} character(s)"
 msgid_plural "should be at least %{count} character(s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Moet minstens %{count} karakter(s) langs zijn "
+msgstr[1] "Moet minstens %{count} karakter(s) langs zijn "
 
 msgid "should have at least %{count} item(s)"
 msgid_plural "should have at least %{count} item(s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Moet minstens %{items} hebben"
+msgstr[1] "Moet minstens %{items} hebben"
 
 msgid "should be at most %{count} character(s)"
 msgid_plural "should be at most %{count} character(s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Mag maximum %{count} karakter(s) lang zijn"
+msgstr[1] "Mag maximum %{count} karakter(s) lang zijn"
 
 msgid "should have at most %{count} item(s)"
 msgid_plural "should have at most %{count} item(s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Mag maximum %{count} items hebben"
+msgstr[1] "Mag maximum %{count} items hebben"
 
 msgid "must be less than %{number}"
-msgstr ""
+msgstr "Moet minder dan %{number} zijn"
 
 msgid "must be greater than %{number}"
-msgstr ""
+msgstr "Moet meer dan %{number} zijn"
 
 msgid "must be less than or equal to %{number}"
-msgstr ""
+msgstr "Moet minder dan of gelijk aan zijn %{number}"
 
 msgid "must be greater than or equal to %{number}"
-msgstr ""
+msgstr "Moet groter dan of gelijk zijn aan %{number}"
 
 msgid "must be equal to %{number}"
-msgstr ""
+msgstr "Moet gelijk zijn aan %{number}"

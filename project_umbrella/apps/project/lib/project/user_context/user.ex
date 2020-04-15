@@ -3,6 +3,7 @@ defmodule Project.UserContext.User do
   import Ecto.Changeset
 
   alias Project.AnimalContext.Animal
+  alias Project.APIContext.Api
 
   @acceptable_roles ["Admin","User"]
 
@@ -14,6 +15,7 @@ defmodule Project.UserContext.User do
     field :username, :string
 
     has_many :animals, Animal
+    has_many :apis, Api
 
   end
 
@@ -37,4 +39,6 @@ defmodule Project.UserContext.User do
   end
 
   defp put_password_hash(changeset), do: changeset
+
+
 end

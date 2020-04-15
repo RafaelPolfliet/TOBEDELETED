@@ -27,17 +27,13 @@ msgid "Type:"
 msgstr "Type:"
 
 #, elixir-format
-#: lib/project_web/templates/page/index.html.eex:2
-msgid "Welcome to %{name}!"
-msgstr ""
-
-#, elixir-format
 #: lib/project_web/templates/layout/app.html.eex:22
 msgid "Login"
 msgstr "Inloggen"
 
 #, elixir-format
 #: lib/project_web/templates/layout/app.html.eex:17
+#: lib/project_web/templates/user/show.html.eex:1
 msgid "My Profile"
 msgstr "Mijn Profiel"
 
@@ -48,6 +44,7 @@ msgstr "Overzicht"
 
 #, elixir-format
 #: lib/project_web/templates/layout/app.html.eex:24
+#: lib/project_web/templates/user/index.html.eex:1
 msgid "User Management"
 msgstr "Gebruikersbeheer"
 
@@ -75,3 +72,44 @@ msgstr "Naam"
 #: lib/project_web/templates/layout/app.html.eex:19
 msgid "Logout"
 msgstr "Uitloggen"
+
+#, elixir-format
+#: lib/project_web/templates/user/show.html.eex:11
+msgid "Change Password"
+msgstr "Wachtwoord aanpassen"
+
+#, elixir-format
+#: lib/project_web/templates/user/show.html.eex:10
+#: lib/project_web/templates/user/username.html.eex:1
+msgid "Change Username"
+msgstr "Gebruikersnaam aanpassen"
+
+#, elixir-format
+#: lib/project_web/templates/session/new.html.eex:22
+msgid "Sign Up"
+msgstr "Registreren"
+
+#, elixir-format
+#: lib/project_web/templates/user/index.html.eex:6
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#, elixir-format
+#: lib/project_web/templates/user/index.html.eex:7
+msgid "Role"
+msgstr "Rol"
+
+#, elixir-format
+#: lib/project_web/templates/layout/app.html.eex:27
+msgid "Project by %{name}"
+msgstr "Project door %{name}"
+
+#, elixir-format
+#: lib/project_web/templates/session/new.html.eex:1
+msgid "Login Page"
+msgstr "Inloggen"
+
+#, elixir-format, fuzzy
+#: lib/project_web/templates/user/show.html.eex:6
+msgid "Username:"
+msgstr "Gebruikersnaam:"

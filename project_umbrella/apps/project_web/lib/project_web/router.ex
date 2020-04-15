@@ -34,13 +34,15 @@ defmodule ProjectWeb.Router do
   scope "/", ProjectWeb do
     pipe_through [:browser, :auth]
 
-    get "/", PageController, :index
+    get "/", SessionController, :new
     get "/login", SessionController, :new
     post "/login", SessionController, :login
     get "/logout", SessionController, :logout
     get "/signup", UserController, :new
     post "/signup", UserController, :create
-    resources "/animal", AnimalController
+    resources "/user", UserController, only: [] do
+      resources "/animals", AnimalController
+    end
   end
 
   scope "/", ProjectWeb do
@@ -52,7 +54,23 @@ defmodule ProjectWeb.Router do
     put "/change_username", UserController, :update
   end
 
+  scope "/", ProjectWeb do
+    pipe_through [:browser, :auth, :ensure_auth, :allowed_for_admins]
 
+    get "/usermanagement", UserController, :index
+    get "/edituser/:id", UserController, :edit
+    delete "/deleteuser/:id", UserController, :delete
+  
+  end
+
+  scope "/api", ProjectWeb do
+    pipe_through :api
+
+
+    resources "/users", UserController, only: [] do
+      resources "/animals", AnimalController
+    end
+  end
 
   # Other scopes may use custom stacks.
   # scope "/api", ProjectWeb do

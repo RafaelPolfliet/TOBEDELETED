@@ -17,10 +17,11 @@ defmodule Project.AnimalContext.Animal do
   def get_acceptable_types, do: @acceptable_types
 
   @doc false
-  def changeset(animal, attrs) do
+  def changeset(animal, attrs, user) do
     animal
     |> cast(attrs, [:name, :date_of_birth, :type])
     |> validate_required([:name, :date_of_birth, :type])
     |> validate_inclusion(:type, @acceptable_types)
+    |> put_assoc(:user,user)
   end
 end

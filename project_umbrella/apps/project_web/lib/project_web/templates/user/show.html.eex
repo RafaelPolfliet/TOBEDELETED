@@ -1,9 +1,9 @@
-<h1>Show User</h1>
+<h1><%= gettext "My Profile"%></h1>
  
  <section>
 
  <p>
-    <strong>Username:</strong>
+    <strong><%= gettext "Username:" %></strong>
     <%= @user.username %>
 </p>
 <p>
