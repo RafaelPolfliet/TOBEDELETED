@@ -45,14 +45,15 @@ defmodule ProjectWeb.AnimalController do
 
   def update(conn, %{"id" => id, "animal" => animal_params}) do
     animal = AnimalContext.get_animal!(id)
-
+    
     case AnimalContext.update_animal(animal, animal_params) do
       {:ok, animal} ->
         render(conn,"show.json",animal: animal)
 
-      {:error,_} ->
+      {:error,changeset} ->
+        test = changeset_error_to_string(changeset)
         conn
-        |> send_resp(400,  "Invalid api-request, adjust your parameters. Know that only animals of type 'Cat' or 'Dog' are allowed")
+        |> send_resp(400,  "Invalid api-request, adjust your parameters. <br>" <> test)
     end
   end
 
@@ -64,4 +65,16 @@ defmodule ProjectWeb.AnimalController do
     end
   end
 
+  defp changeset_error_to_string(changeset) do
+    Ecto.Changeset.traverse_errors(changeset, fn {msg, opts} ->
+      Enum.reduce(opts, msg, fn {key, value}, acc ->
+        String.replace(acc, "%{#{key}}", to_string(value))
+      end)
+    end)
+    |> Enum.reduce("", fn {k, v}, acc ->
+      k = String.capitalize(String.slice(Atom.to_string(k),0..0)) <> String.slice(Atom.to_string(k),1..-1)
+      joined_errors = Enum.join(v, "; ")
+      "#{acc}#{k}: #{joined_errors}<br>"
+    end)
+  end
 end
