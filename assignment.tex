@@ -27,13 +27,13 @@
     \item Heb je problemen met je project kun je altijd naar het monitoraat komen. Daarnaast is het ook mogelijk om je vraag op het Toledo forum te plaatsen. Mails met vragen zullen onbeantwoord blijven.
 \end{itemize}{}
 \section{Opgave}
-De opgave is om een applicatie te ontwikkelen waar dat gebruikers informatie kunnen bijhouden welke honden en katten ze zijn tegen gekomen. We willen onthouden wat de naam van het dier was, weten of het een kat of een hond is, wanneer het is geboren en wie dat het baasje is. Daarnaast willen we dat een third party application gebruik kan maken van onze API om  een overzicht te krijgen welke honden en katten we zijn tegengekomen, nieuwe honden en katten kan toevoegen, reeds gekende honden en katten kan wijzigen en zelfs kan verwijderen. Bovendien moet er een onderscheid gemaakt worden tussen een standaard gebruiker die zich aanmeld en een admin. Een admin moet naast de functionaliteiten die een standaard gebruiker heeft, een extra functionaliteit hebben om gebruikers te verwijderen en om het wachtwoord van een gebruiker aan te passen. Tot slot wordt er verwacht dat er tests geschreven worden. De tests mogen beperkt blijven tot de API werking.
+De opgave is om een applicatie te ontwikkelen waar dat gebruikers informatie kunnen bijhouden welke honden en katten ze zijn tegen gekomen. We willen onthouden wat de naam van het dier was, weten of het een kat of een hond is, wanneer het is geboren en wie dat het baasje is. Daarnaast willen we dat een third party application gebruik kan maken van onze API om  een overzicht te krijgen welke honden en katten we zijn tegengekomen, nieuwe honden en katten kan toevoegen, reeds gekende honden en katten kan wijzigen en zelfs kan verwijderen. Bovendien moet er een onderscheid gemaakt worden tussen een standaard gebruiker die zich aanmeld en een admin. Een admin moet naast de functionaliteiten die een standaard gebruiker heeft, een extra functionaliteit hebben om gebruikers te verwijderen en om het wachtwoord van een gebruiker aan te passen.
 
 \section{API}
 Met de API is het de bedoeling dat een third party application honden en katten kan toevoegen, reeds gekende honden en katten kan wijzigen en bestaande honden en katten kan verwijderen \textbf{die van jou zijn}. Om een van deze acties uit te kunnen voeren moet in de https requests header een geldige API key meegegeven worden. Bovendien is het de bedoeling om voor iedere third party application een nieuwe API key mee te geven. Zo kunnen we eenvoudig de toegang van 1 third party application blokkeren door het intrekken van overeenkomstige API key.
 \\
 \\
-De API key bestaat uit een random string zonder verlooptijd (string mag zelf gegenereerd worden). Er hoeft geen signing van deze random string te gebeuren en sla deze string mee op in je database. De token word doorgestuurd met volgende header-key "MyFancyHeader:<API-key>".
+De API key bestaat uit een random string zonder verlooptijd (string mag zelf gegenereerd worden). Er hoeft geen signing van deze random string te gebeuren en sla deze string mee op in je database. De token word doorgestuurd met volgende header-key "MyFancyHeader:$<$API-key$>$".
 Het gemakkelijkste om deze token te verwerken is om een plug te schrijven die uit de request de nodige request headers haalt en deze verwerkt. Door middel van de Plug.Conn kan dit eenvoudig bereikt worden. \url{https://hexdocs.pm/plug/Plug.Conn.html}
 
 \subsection{Create}
@@ -69,13 +69,13 @@ Voorzie een API endpoint om door middel van een GET request info over een specif
 
 
 \subsection{Update}
-Voorzie een API endpoint om door middel van een PUT of PATCH request een dier up te daten op basis van ID. Dit kan een response geven van 200, 400 met de errors van de verkeerde velden TODO: VERIFY
+Voorzie een API endpoint om door middel van een PUT of PATCH request een dier up te daten op basis van ID.
 
 \subsection{Delete}
 Voorzie een API endpoint om door middel van een DELETE request een dier te verwijderen op basis van ID.
 
-\subsection{EXTRA}
-Je kan enkel je eigen dieren beheren of toegang verlenen aan andere gebruikers door middel van API keys. Bij het binnenkomen v.e. request, ga je nakijken of de meegegeven API key geldig is voor de gebruiker van wie je dieren wilt aanpassen/lezen.
+\subsection{API}
+Je kan enkel je eigen dieren beheren door middel van API keys. Bij het binnenkomen v.e. request, ga je nakijken of de meegegeven API key geldig is voor de gebruiker van wie je dieren wilt aanpassen/lezen.
 
 \section{Pagina's}
 Om de opgave tot een goed einde te brengen is het nodig om verschillende pagina's met hun eigen functionaliteit te ontwerpen. In deze sectie wordt er dieper ingegaan op de verwachtingen van iedere pagina.
@@ -88,7 +88,7 @@ Met uitzondering van de login pagina [\ref{subsect:login_pagina}] en de raw-api 
 Zoals de naam als doet vermoeden is dit de pagina waar dat een gebruiker kan inloggen. Het inloggen gebeurd op basis van een gebruikersnaam \& wachtwoord. Door op de sign up knop te drukken word je doorverwezen naar een sign up pagina waardat niewe gebruikers zicht kunnen registreren. 
 
 \subsection{Sign up pagina}
-Op deze pagina kan een nieuwe gebruiker zichzelf registreren. Het aanmaken van een account kan door het geven van een gebruikersnaam en een wachtwoord. Controlleer ook zeken of dat de gebruikersnaam uniek is. Voor het opslaan van het wachtwoord mag Pbkdf2 gebruikt worden als hash algoritme. \\
+Op deze pagina kan een nieuwe gebruiker zichzelf registreren. Het aanmaken van een account kan door het geven van een gebruikersnaam een wachtwoord en dit wachtwoord te confirmeren via een extra textbox. Controlleer ook zeken of dat de gebruikersnaam uniek is. Voor het opslaan van het wachtwoord mag Pbkdf2 gebruikt worden als hash algoritme. \\
 
 Authenticatie is d.m.v. JWT, dus geen sessions!
 
@@ -133,6 +133,10 @@ Per opgelijste user, zie je de knoppen
 \subsubsection{Edit user page}
 Op deze pagina kan een admin de gebruikersnaam \& wachtwoord van een gebruiker wijzigen. Er is een save button en een cancel button om terug naar het overzicht te gaan.
 
+
+\section{Filmpje}
+Door de wijzigingen in zowel de manier van lesgeven als het examen verwachten wij dat iedereen een filmpje maakt waarin hij/zij kort even het project overloopt. Neem hier als voorbeeld het filmpje dat op Toledo te vinden is onder \textit{Assignments -$>$ project -$>$ ip-major-project-info.mp4}.
+Dit is ook de plaats waar we verwachten dat dit filmpje geupload zal worden voor de deadline van woensdag 20 mei 8u!
 
 
 \pagebreak
