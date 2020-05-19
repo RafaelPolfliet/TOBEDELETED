@@ -61,7 +61,7 @@ defmodule ProjectWeb.UserController do
   def current_username_update(conn, %{ "user" => user_params}) do
     user = Guardian.Plug.current_resource(conn)
     case UserContext.update_username(user, user_params) do
-      {:ok, user} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, gettext "Username updated successfully.")
         |> redirect(to: Routes.user_path(conn, :show))
@@ -75,7 +75,7 @@ defmodule ProjectWeb.UserController do
   def current_password_update(conn, %{ "user" => user_params}) do
     user = Guardian.Plug.current_resource(conn)
     case UserContext.update_user_password(user, user_params) do
-      {:ok, user} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, gettext "Password updated successfully.")
         |> redirect(to: Routes.user_path(conn, :show))
@@ -88,7 +88,7 @@ defmodule ProjectWeb.UserController do
   def update(conn, %{ "id" => id, "user" => user_params}) do
     user = UserContext.get_user!(id)
     case UserContext.update_user(user, user_params) do
-      {:ok, user} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, gettext "User updated successfully.")
         |> redirect(to: Routes.user_path(conn, :index))
