@@ -1,4 +1,4 @@
-defmodule Project.API.Api do
+defmodule Project.APIContext.Api do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -7,17 +7,23 @@ defmodule Project.API.Api do
   schema "apis" do
     field :api_key, :string
     field :name, :string
-    field :user_id, :id
-
     belongs_to :user, User
   end
 
   @doc false
-  def changeset(api, attrs, user) do
+  def changeset(api, attrs) do
+    api
+    |> cast(attrs, [:api_key, :name])
+    |> validate_required([:api_key, :name])
+
+  end
+
+  def create_changeset(api, attrs, user) do
     api
     |> cast(attrs, [:api_key, :name])
     |> validate_required([:api_key, :name])
     |> put_assoc(:user,user)
-    |> validate_length(:api_key, :is 128)
+
   end
+
 end

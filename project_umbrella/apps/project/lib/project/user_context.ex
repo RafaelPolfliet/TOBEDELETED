@@ -13,13 +13,13 @@ defmodule Project.UserContext do
     case Repo.get_by(User, username: username) do
       nil ->
         Pbkdf2.no_user_verify()
-        {:error, :invalid_credentials}
+        {:error, "Invalid Credentials"}
 
       user ->
         if Pbkdf2.verify_pass(plain_text_password, user.hashed_password) do
           {:ok, user}
         else
-          {:error, :invalid_credentials}
+          {:error, "Invalid Credentials"}
         end
     end
   end
@@ -63,6 +63,7 @@ defmodule Project.UserContext do
   """
   def get_user!(id), do: Repo.get!(User, id)
 
+
   @doc """
   Creates a user.
 
@@ -96,6 +97,18 @@ defmodule Project.UserContext do
   def update_user(%User{} = user, attrs) do
     user
     |> User.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def update_username(%User{} = user, attrs) do
+    user
+    |> User.changeset_username(attrs)
+    |> Repo.update()
+  end
+
+  def update_user_password(%User{} = user, attrs) do
+    user
+    |> User.changeset_password(attrs)
     |> Repo.update()
   end
 

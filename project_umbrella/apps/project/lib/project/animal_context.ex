@@ -48,6 +48,18 @@ defmodule Project.AnimalContext do
   """
   def get_animal!(id), do: Repo.get!(Animal, id)
 
+
+def get_animal_for_user(id,%User{} = user) do
+    case Repo.get(Animal, id) do
+     nil ->  {:error, "Permission denied"}
+     animal ->
+           if (animal != nil && animal.user_id === user.id) do
+           {:ok, animal}
+          else
+           {:error, "Permission denied"}
+         end
+     end
+ end
   @doc """
   Creates a animal.
 
@@ -62,7 +74,7 @@ defmodule Project.AnimalContext do
   """
   def create_animal(attrs, %User{} = user) do
     %Animal{}
-    |> Animal.changeset(attrs,user)
+    |> Animal.create_changeset(attrs,user)
     |> Repo.insert()
   end
 

@@ -76,13 +76,14 @@ msgid "Logout"
 msgstr "Uitloggen"
 
 #, elixir-format
+#: lib/project_web/templates/user/change_password.html.eex:1
 #: lib/project_web/templates/user/show.html.eex:11
 msgid "Change Password"
 msgstr "Wachtwoord aanpassen"
 
 #, elixir-format
-#: lib/project_web/templates/user/show.html.eex:10
-#: lib/project_web/templates/user/username.html.eex:1
+#: lib/project_web/templates/user/change_username.html.eex:1
+#: lib/project_web/templates/user/show.html.eex:10 lib/project_web/templates/user/username.html.eex:1
 msgid "Change Username"
 msgstr "Gebruikersnaam aanpassen"
 
@@ -99,7 +100,7 @@ msgid "Username"
 msgstr "Gebruikersnaam"
 
 #, elixir-format
-#: lib/project_web/templates/user/index.html.eex:7
+#: lib/project_web/templates/user/index.html.eex:8
 msgid "Role"
 msgstr "Rol"
 
@@ -124,6 +125,7 @@ msgid "API-Key"
 msgstr "API-Sleutel"
 
 #, elixir-format
+#: lib/project_web/templates/user/form.html.eex:4
 #: lib/project_web/templates/user/new.html.eex:6
 msgid "Something went wrong! Please check the error messages below!"
 msgstr "Iets ging fout! Gelieve de onderstaande foutmeldingen te controleren!"
@@ -160,6 +162,7 @@ msgid "Delete"
 msgstr "Verwijder"
 
 #, elixir-format
+#: lib/project_web/templates/animal/show.html.eex:22
 #: lib/project_web/templates/user/index.html.eex:19
 msgid "Edit"
 msgstr "Wijzigen"
@@ -175,22 +178,22 @@ msgid "Show"
 msgstr "Tonen"
 
 #, elixir-format
-#: lib/project_web/controllers/user_controller.ex:30
+#: lib/project_web/controllers/user_controller.ex:29
 msgid "Your registration was succesfull - Please login"
 msgstr "Uw registratie was succesvol - Gelieve in te loggen"
 
 #, elixir-format
-#: lib/project_web/controllers/api_controller.ex:14
+#: lib/project_web/controllers/api_controller.ex:13
 msgid "API-Key created successfully."
-msgstr "API-Sleut succesvol aangemaakt"
+msgstr "API-Sleutel succesvol aangemaakt"
 
 #, elixir-format
-#: lib/project_web/controllers/api_controller.ex:19
+#: lib/project_web/controllers/api_controller.ex:18
 msgid "API-Key needs a name"
 msgstr "API-Sleutel moet een naam hebben"
 
 #, elixir-format
-#: lib/project_web/controllers/api_controller.ex:38
+#: lib/project_web/controllers/api_controller.ex:47
 msgid "API-Key succesfully revoked"
 msgstr "API-Sleutel succesvol ingetrokken"
 
@@ -200,12 +203,12 @@ msgid "Welcome back!"
 msgstr "Welkom terug!"
 
 #, elixir-format
-#: lib/project_web/controllers/user_controller.ex:73
+#: lib/project_web/controllers/user_controller.ex:106
 msgid "User deleted successfully."
 msgstr "Gebruiker succesvol verwijderd."
 
 #, elixir-format
-#: lib/project_web/controllers/user_controller.ex:60
+#: lib/project_web/controllers/user_controller.ex:93
 msgid "User updated successfully."
 msgstr "Gebruiker succesvol aangepast."
 
@@ -214,3 +217,61 @@ msgstr "Gebruiker succesvol aangepast."
 #: lib/project_web/plugs/authorization_plug.ex:19
 msgid "Unauthorized access"
 msgstr "Toegang geweigerd"
+
+#, elixir-format
+#: lib/project_web/templates/user/change_password.html.eex:18
+msgid "Confirm new password:"
+msgstr "Bevestig Wachtwoord"
+
+#, elixir-format
+#: lib/project_web/templates/user/change_password.html.eex:14
+msgid "New password:"
+msgstr "Nieuw wachtwoord"
+
+#, elixir-format
+#: lib/project_web/templates/user/change_username.html.eex:10
+msgid "New username:"
+msgstr "Nieuwe gebruikersnaam"
+
+#, elixir-format
+#: lib/project_web/templates/user/change_password.html.eex:10
+msgid "Previous password:"
+msgstr "Vorig wachtwoord"
+
+#, elixir-format
+#: lib/project_web/controllers/session_controller.ex:39
+msgid "Invalid credentials"
+msgstr "Ongeldige gegevens"
+
+#, elixir-format
+#: lib/project_web/controllers/user_controller.ex:80
+msgid "Password updated successfully."
+msgstr "Wachtwoord succesvol aangepast."
+
+#, elixir-format
+#: lib/project_web/controllers/user_controller.ex:66
+msgid "Username updated successfully."
+msgstr "Gebruikersnaam succesvol aangepast."
+
+#, elixir-format
+#: lib/project_web/templates/user/edit.html.eex:1
+msgid "Edit User"
+msgstr "Wijzig Gebruiker"
+
+#, elixir-format
+#: lib/project_web/templates/animal/edit.html.eex:5
+#: lib/project_web/templates/animal/show.html.eex:23 lib/project_web/templates/user/change_password.html.eex:27
+#: lib/project_web/templates/user/change_username.html.eex:19
+msgid "Back"
+msgstr "Terug"
+
+#, elixir-format
+#: lib/project_web/templates/user/index.html.eex:7
+msgid "Hashed Password"
+msgstr "Hash Wachtwoord"
+
+#, elixir-format
+#: lib/project_web/templates/user/index.html.eex:20
+#: lib/project_web/templates/user/show.html.eex:41
+msgid "Are you sure?"
+msgstr "Bent u zeker?"

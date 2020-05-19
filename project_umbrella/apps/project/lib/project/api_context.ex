@@ -6,7 +6,8 @@ defmodule Project.APIContext do
   import Ecto.Query, warn: false
   alias Project.Repo
 
-  alias Project.API.Api
+  alias Project.APIContext.Api
+  alias Project.UserContext.User
 
   @doc """
   Returns the list of apis.
@@ -17,6 +18,13 @@ defmodule Project.APIContext do
       [%Api{}, ...]
 
   """
+
+  def load_users_apis(%User{} = u) do
+    u
+    |> Repo.preload([:apis])
+  end
+
+
   def list_apis do
     Repo.all(Api)
   end
@@ -37,6 +45,18 @@ defmodule Project.APIContext do
   """
   def get_api!(id), do: Repo.get!(Api, id)
 
+  def get_api_for_user(id,%User{} = user) do
+     case Repo.get(Api, id) do
+      nil ->  {:error, "Permission denied"}
+      api ->
+            if (api != nil && api.user_id === user.id) do
+            {:ok, api}
+           else
+            {:error, "Permission denied"}
+          end
+      end
+  end
+
   @doc """
   Creates a api.
 
@@ -49,9 +69,13 @@ defmodule Project.APIContext do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_api(attrs \\ %{}) do
+  def create_api(attrs \\ %{}, %User{} = user) do
+
+    token = Phoenix.Token.sign(ProjectWeb.Endpoint,"userAPIkey", user.id)
+    
     %Api{}
-    |> Api.changeset(attrs)
+    |> Ecto.Changeset.change(%{api_key: token})
+    |> Api.create_changeset(attrs,user)
     |> Repo.insert()
   end
 

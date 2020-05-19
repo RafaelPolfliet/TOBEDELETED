@@ -38,12 +38,12 @@
       <td><%= api.name %></td>
       <td>
           <span><%= link (gettext "Show") , to: Routes.api_path(@conn, :show, api) %></span><span> --</span>
-          <span><%= link (gettext "Revoke"), to: Routes.api_path(@conn, :delete, api), method: :delete, data: [confirm: "Are you sure?"] %></span>
+          <span><%= link (gettext "Revoke"), to: Routes.api_path(@conn, :delete, api), method: :delete, data: [confirm: gettext "Are you sure?"] %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
   </table>
 
-   <span><%= gettext "Your personal api-link: "%><%= link "localhost:4000/api/users/#{@user.id}/animals", to: Routes.user_animal_path(@conn, :index, @user) %></span>
+   <span><%= gettext "Your personal api-link: "%><%= link "localhost:4000/api/users/#{@user.id}/animals", to: Routes.user_path(@conn, :show) %></span>
 </section>

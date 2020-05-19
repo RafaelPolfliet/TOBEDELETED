@@ -34,9 +34,9 @@ defmodule ProjectWeb.SessionController do
     |> redirect(to: "/dashboard")
   end
 
-  defp login_reply({:error, reason}, conn) do
+  defp login_reply({:error, _reason}, conn) do
     conn
-    |> put_flash(:error, Gettext.gettext(ProjectWeb.Gettext, reason))
+    |> put_flash(:error, gettext "Invalid credentials")
     |> new(%{})
   end
 end

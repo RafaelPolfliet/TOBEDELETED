@@ -13,7 +13,6 @@ defmodule ProjectWeb.UserController do
 
   def index(conn, _params) do
     users = UserContext.list_users()
-    
     render(conn, "index.html", users: users)
   end
 
@@ -35,8 +34,6 @@ defmodule ProjectWeb.UserController do
     end
   end
 
-  
-
   def show(conn, _params) do
     user = Guardian.Plug.current_resource(conn)
     user = APIContext.load_users_apis(user)
@@ -44,21 +41,57 @@ defmodule ProjectWeb.UserController do
     render(conn, "show.html", user: user,changeset: changeset)
   end
 
-
   def edit(conn, %{"id" => id}) do
     user = UserContext.get_user!(id)
     changeset = UserContext.change_user(user)
     render(conn, "edit.html", user: user, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "user" => user_params}) do
-    user = UserContext.get_user(id)
+  def change_username(conn, _params) do
+    user = Guardian.Plug.current_resource(conn)
+    changeset = UserContext.change_user(user)
+    render(conn, "change_username.html", changeset: changeset)
+  end
 
+  def change_password(conn, _params) do
+    user = Guardian.Plug.current_resource(conn)
+    changeset = UserContext.change_user(user)
+    render(conn, "change_password.html", changeset: changeset)
+  end
+  def current_username_update(conn, %{ "user" => user_params}) do
+    user = Guardian.Plug.current_resource(conn)
+    case UserContext.update_username(user, user_params) do
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, gettext "Username updated successfully.")
+        |> redirect(to: Routes.user_path(conn, :show))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "change_username.html", user: user, changeset: changeset)
+    end
+  end
+
+  
+  def current_password_update(conn, %{ "user" => user_params}) do
+    user = Guardian.Plug.current_resource(conn)
+    case UserContext.update_user_password(user, user_params) do
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, gettext "Password updated successfully.")
+        |> redirect(to: Routes.user_path(conn, :show))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "change_password.html", user: user, changeset: changeset)
+    end
+  end
+
+  def update(conn, %{ "id" => id, "user" => user_params}) do
+    user = UserContext.get_user!(id)
     case UserContext.update_user(user, user_params) do
       {:ok, user} ->
         conn
         |> put_flash(:info, gettext "User updated successfully.")
-        |> redirect(to: Routes.user_path(conn, :show, user))
+        |> redirect(to: Routes.user_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)

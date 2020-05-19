@@ -7,7 +7,6 @@ defmodule ProjectWeb.ApiController do
 
         user = Guardian.Plug.current_resource(conn)
 
-
         case APIContext.create_api(api_params,user) do
           {:ok, _user} ->
             conn
@@ -24,19 +23,33 @@ defmodule ProjectWeb.ApiController do
 
 
     def show(conn, %{"id" => api_id}) do
-      key = APIContext.get_api!(api_id).api_key
-      text conn, key
+      user = Guardian.Plug.current_resource(conn)
+
+      case APIContext.get_api_for_user(api_id,user) do
+        {:ok, api} ->
+          text conn,  api.api_key
+        {:error, _} ->
+          text conn, "Permission denied"
+        end
+
+
     end
 
 
 
     def delete(conn, %{"id" => id}) do
-      api = APIContext.get_api!(id)
-      {:ok, _user} = APIContext.delete_api(api)
-  
-      conn
-      |> put_flash(:info, gettext "API-Key succesfully revoked")
-      |> redirect(to: Routes.user_path(conn, :show))
+      user = Guardian.Plug.current_resource(conn)
+
+      case APIContext.get_api_for_user(id,user) do
+        {:ok, api} ->
+          APIContext.delete_api(api)
+          conn
+          |> put_flash(:info, gettext "API-Key succesfully revoked")
+          |> redirect(to: Routes.user_path(conn, :show))
+        {:error, _} ->
+          conn
+          |> send_resp(401,"Permission Denied!")
+        end
     end
 
 end

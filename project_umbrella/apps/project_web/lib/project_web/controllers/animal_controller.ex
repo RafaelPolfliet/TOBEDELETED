@@ -32,37 +32,56 @@ defmodule ProjectWeb.AnimalController do
           |> put_resp_header("location", Routes.user_animal_path(conn,:show,user_id,animal))
           |> render("show.json",animal: animal)
 
-      {:error, _} ->
+      {:error, changeset} ->
+        error = changeset_error_to_string(changeset)
         conn
-        |> send_resp(400,  "Invalid api-request, adjust your parameters. Know that only animals of type 'Cat' or 'Dog' are allowed")
+        |> send_resp(400,  "Invalid api-request, adjust your parameters. <br>" <> error)
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    animal = AnimalContext.get_animal!(id)
-    render(conn, "show.json", animal: animal)
-  end
-
-  def update(conn, %{"id" => id, "animal" => animal_params}) do
-    animal = AnimalContext.get_animal!(id)
+  def show(conn, %{"id" => id, "user_id" => user_id}) do
+    user = UserContext.get_user!(user_id)
     
-    case AnimalContext.update_animal(animal, animal_params) do
+    case AnimalContext.get_animal_for_user(id,user) do
       {:ok, animal} ->
-        render(conn,"show.json",animal: animal)
-
-      {:error,changeset} ->
-        test = changeset_error_to_string(changeset)
-        conn
-        |> send_resp(400,  "Invalid api-request, adjust your parameters. <br>" <> test)
-    end
+        render(conn, "show.json", animal: animal)
+      {:error, _} ->
+        text conn, "Permission denied"
+      end
   end
 
-  def delete(conn, %{"id" => id}) do
-    animal = AnimalContext.get_animal!(id)
+  def update(conn, %{"id" => id, "animal" => animal_params, "user_id" => user_id}) do 
+    user = UserContext.get_user(user_id)
 
-    with {:ok, %Animal{}} <- AnimalContext.delete_animal(animal) do
-      send_resp(conn, :no_content, "")
-    end
+    case AnimalContext.get_animal_for_user(id,user) do
+      {:ok, animal} ->
+        case AnimalContext.update_animal(animal, animal_params) do
+          {:ok, animal} ->
+            render(conn,"show.json",animal: animal)
+    
+          {:error,changeset} ->
+            error = changeset_error_to_string(changeset)
+            conn
+            |> send_resp(400,  "Invalid api-request, adjust your parameters. <br>" <> error)
+        end
+      {:error, _} ->
+        text conn, "Permission denied"
+      end
+  end
+
+  def delete(conn, %{"id" => id, "user_id" => user_id}) do
+    user = UserContext.get_user(user_id)
+
+    case AnimalContext.get_animal_for_user(id,user) do
+      {:ok, animal} ->
+        
+         with {:ok, %Animal{}} <- AnimalContext.delete_animal(animal) do
+            send_resp(conn, :no_content, "")
+          end
+      {:error, _} ->
+        text conn, "Permission denied"
+      end
+
   end
 
   defp changeset_error_to_string(changeset) do

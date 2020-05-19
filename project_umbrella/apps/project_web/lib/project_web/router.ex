@@ -44,9 +44,7 @@ defmodule ProjectWeb.Router do
     get "/logout", SessionController, :logout
     get "/signup", UserController, :new
     post "/signup", UserController, :create
-    resources "/user", UserController, only: [] do
-      resources "/animals", AnimalController
-    end
+    
   end
 
   scope "/", ProjectWeb do
@@ -54,8 +52,11 @@ defmodule ProjectWeb.Router do
 
     get "/dashboard", AnimalController, :index_web
     get "/profile", UserController, :show
-    get "/change_username/:id", UserController, :edit
-    put "/change_username", UserController, :update
+    get "/change/:id", UserController, :edit
+    get "/change_username", UserController, :change_username
+    put "/change_username", UserController, :current_username_update
+    get "/change_password", UserController, :change_password
+    put "/change_password", UserController, :current_password_update
     post "/newApiKey", ApiController, :create
     get "/profile/apikeys/:id",ApiController, :show
     delete "/profile/apikeys/:id",ApiController, :delete
@@ -67,6 +68,7 @@ defmodule ProjectWeb.Router do
 
     get "/usermanagement", UserController, :index
     get "/edituser/:id", UserController, :edit
+    put "/edituser/:id", UserController, :update
     delete "/deleteuser/:id", UserController, :delete
   
   end

@@ -1,4 +1,9 @@
 defmodule ProjectWeb.Plugs.ApiKeyPlug do
+
+
+    alias Project.APIContext
+    alias Project.UserContext
+
  
     def init(options), do: options
   
@@ -13,12 +18,23 @@ defmodule ProjectWeb.Plugs.ApiKeyPlug do
 
     def verify(conn,key,user_id) do
         user_id = String.to_integer(user_id)
+
+     
+
         case Phoenix.Token.verify(ProjectWeb.Endpoint,"userAPIkey",key, max_age: :infinity) do
-          {:ok,^user_id} ->
-                conn
-          {_, _} ->
+            {:ok,^user_id} ->
+                user = UserContext.get_user(user_id)
+                apis = APIContext.load_users_apis(user).apis
+
+                if Enum.any?(apis, fn x -> x.api_key == key end) do
+                       conn
+                else
+
+                    Plug.Conn.send_resp(conn,401,"Permission Denied!")
+                end
+            {_, _} ->
                 Plug.Conn.send_resp(conn,401,"Permission Denied!")
 
-       end
+        end
   end
   end
