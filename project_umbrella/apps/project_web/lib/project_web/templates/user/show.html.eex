@@ -19,6 +19,10 @@
 <%= text_input f, :name %>
 <%= error_tag f, :name %>
 
+<%= label f, :writeable%>
+<%= checkbox f, :writeable %>
+<%= error_tag f, :writeable %>
+
 <div>
   <%= submit gettext "Generate" %>
 </div>
@@ -30,12 +34,15 @@
   <thead>
     <tr>
       <th><%= gettext "API-Key" %></th>
+      <th><%= gettext "Writeable" %></th>
+
     </tr>
   </thead>
   <tbody>
 <%= for api <- @user.apis do %>
     <tr>
       <td><%= api.name %></td>
+      <td><%= api.writeable%>
       <td>
           <span><%= link (gettext "Show") , to: Routes.api_path(@conn, :show, api) %></span><span> --</span>
           <span><%= link (gettext "Revoke"), to: Routes.api_path(@conn, :delete, api), method: :delete, data: [confirm: gettext "Are you sure?"] %></span>

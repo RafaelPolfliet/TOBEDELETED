@@ -1,0 +1,1034 @@
+{
+	"info": {
+		"_postman_id": "dbfcddc6-e34f-4fe0-b136-d6debb96484a",
+		"name": "Examen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add animal",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "SFMyNTY.g3QAAAACZAAEZGF0YWEDZAAGc2lnbmVkbgYAX4lny3IB.n6XE1fegHZv8RcfiuBRz4ipexfmw3dZwHzVx7jvMK0s",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "MyFancyHeader",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "animal[name]",
+							"value": "derde test",
+							"type": "text"
+						},
+						{
+							"key": "animal[date_of_birth]",
+							"value": "2020-11-23",
+							"type": "text"
+						},
+						{
+							"key": "animal[type]",
+							"value": "Cat",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4000/api/users/3/animals/",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"users",
+						"3",
+						"animals",
+						""
+					]
+				},
+				"description": "With write permission"
+			},
+			"response": [
+				{
+					"name": "add animal",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "animal[name]",
+									"value": "derde test",
+									"type": "text"
+								},
+								{
+									"key": "animal[date_of_birth]",
+									"value": "2020-11-23",
+									"type": "text"
+								},
+								{
+									"key": "animal[type]",
+									"value": "Cat",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:4000/api/users/3/animals/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"3",
+								"animals",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "content-length",
+							"value": "79"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 19 Jun 2020 07:36:04 GMT"
+						},
+						{
+							"key": "location",
+							"value": "/api/users/3/animals/4"
+						},
+						{
+							"key": "server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "x-request-id",
+							"value": "FhnhwXuc6sBTB30AAAOh"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"date_of_birth\": \"2020-11-23\",\n        \"id\": 4,\n        \"name\": \"derde test\",\n        \"type\": \"Cat\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "get all animals",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "SFMyNTY.g3QAAAACZAAEZGF0YWEDZAAGc2lnbmVkbgYAN6dny3IB.oWxSr6ZvTOjaY3fnj1Sq9MDRtWTQXFm-RB548xdc3iI",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "MyFancyHeader",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "animal[id]",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4000/api/users/3/animals/",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"users",
+						"3",
+						"animals",
+						""
+					]
+				},
+				"description": "with write permission"
+			},
+			"response": []
+		},
+		{
+			"name": "get 1 animal",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "SFMyNTY.g3QAAAACZAAEZGF0YWEDZAAGc2lnbmVkbgYAN6dny3IB.oWxSr6ZvTOjaY3fnj1Sq9MDRtWTQXFm-RB548xdc3iI",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "MyFancyHeader",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "localhost:4000/api/users/3/animals/4",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"users",
+						"3",
+						"animals",
+						"4"
+					]
+				},
+				"description": "with write permission"
+			},
+			"response": [
+				{
+					"name": "get 1 animal",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:4000/api/users/3/animals/4",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"3",
+								"animals",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "content-length",
+							"value": "79"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 19 Jun 2020 07:36:22 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "x-request-id",
+							"value": "FhnhxbAxKkBVR2QAAAQB"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"date_of_birth\": \"2020-11-23\",\n        \"id\": 4,\n        \"name\": \"derde test\",\n        \"type\": \"Cat\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "update animal patch",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "SFMyNTY.g3QAAAACZAAEZGF0YWEDZAAGc2lnbmVkbgYAX4lny3IB.n6XE1fegHZv8RcfiuBRz4ipexfmw3dZwHzVx7jvMK0s",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "MyFancyHeader",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "animal[name]",
+							"value": "derde test patch",
+							"type": "text"
+						},
+						{
+							"key": "animal[date_of_birth]",
+							"value": "2020-11-23",
+							"type": "text"
+						},
+						{
+							"key": "animal[type]",
+							"value": "Cat",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4000/api/users/3/animals/4",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"users",
+						"3",
+						"animals",
+						"4"
+					]
+				},
+				"description": "with write permission"
+			},
+			"response": [
+				{
+					"name": "update animal patch",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "animal[name]",
+									"value": "derde test patch",
+									"type": "text"
+								},
+								{
+									"key": "animal[date_of_birth]",
+									"value": "2020-11-23",
+									"type": "text"
+								},
+								{
+									"key": "animal[type]",
+									"value": "Cat",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:4000/api/users/3/animals/4",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"3",
+								"animals",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "content-length",
+							"value": "85"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 19 Jun 2020 07:37:02 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "x-request-id",
+							"value": "FhnhzyaVnIDC8-wAAARh"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"date_of_birth\": \"2020-11-23\",\n        \"id\": 4,\n        \"name\": \"derde test patch\",\n        \"type\": \"Cat\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "update animal put",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "SFMyNTY.g3QAAAACZAAEZGF0YWEDZAAGc2lnbmVkbgYAX4lny3IB.n6XE1fegHZv8RcfiuBRz4ipexfmw3dZwHzVx7jvMK0s",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "MyFancyHeader",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "animal[name]",
+							"value": "derde test put",
+							"type": "text"
+						},
+						{
+							"key": "animal[date_of_birth]",
+							"value": "2020-11-23",
+							"type": "text"
+						},
+						{
+							"key": "animal[type]",
+							"value": "Cat",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4000/api/users/3/animals/4",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"users",
+						"3",
+						"animals",
+						"4"
+					]
+				},
+				"description": "with write permission"
+			},
+			"response": [
+				{
+					"name": "update animal put",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "animal[name]",
+									"value": "derde test put",
+									"type": "text"
+								},
+								{
+									"key": "animal[date_of_birth]",
+									"value": "2020-11-23",
+									"type": "text"
+								},
+								{
+									"key": "animal[type]",
+									"value": "Cat",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:4000/api/users/3/animals/4",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"3",
+								"animals",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "content-length",
+							"value": "83"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 19 Jun 2020 07:37:15 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "x-request-id",
+							"value": "Fhnh0ibjZwA1JvIAAASB"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"date_of_birth\": \"2020-11-23\",\n        \"id\": 4,\n        \"name\": \"derde test put\",\n        \"type\": \"Cat\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "delete animal",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "SFMyNTY.g3QAAAACZAAEZGF0YWEDZAAGc2lnbmVkbgYAX4lny3IB.n6XE1fegHZv8RcfiuBRz4ipexfmw3dZwHzVx7jvMK0s",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "MyFancyHeader",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/api/users/3/animals/4",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"users",
+						"3",
+						"animals",
+						"4"
+					]
+				},
+				"description": "with write permission"
+			},
+			"response": [
+				{
+					"name": "delete animal",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/users/3/animals/4",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"3",
+								"animals",
+								"4"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 19 Jun 2020 07:37:31 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "x-request-id",
+							"value": "Fhnh1bxDbMDM5HcAAASh"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "delete animal",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/users/3/animals/4",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"3",
+								"animals",
+								"4"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 19 Jun 2020 07:37:31 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "x-request-id",
+							"value": "Fhnh1bxDbMDM5HcAAASh"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "delete animal",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/users/3/animals/4",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"3",
+								"animals",
+								"4"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 19 Jun 2020 07:37:31 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "x-request-id",
+							"value": "Fhnh1bxDbMDM5HcAAASh"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "delete animal",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/users/3/animals/4",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"3",
+								"animals",
+								"4"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 19 Jun 2020 07:37:31 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "x-request-id",
+							"value": "Fhnh1bxDbMDM5HcAAASh"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "delete animal",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/users/3/animals/4",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"3",
+								"animals",
+								"4"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 19 Jun 2020 07:37:31 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "x-request-id",
+							"value": "Fhnh1bxDbMDM5HcAAASh"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "final get all animals",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "SFMyNTY.g3QAAAACZAAEZGF0YWEDZAAGc2lnbmVkbgYAN6dny3IB.oWxSr6ZvTOjaY3fnj1Sq9MDRtWTQXFm-RB548xdc3iI",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "MyFancyHeader",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "animal[id]",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4000/api/users/3/animals/",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"users",
+						"3",
+						"animals",
+						""
+					]
+				},
+				"description": "with write permission"
+			},
+			"response": [
+				{
+					"name": "final get all animals",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "animal[id]",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:4000/api/users/3/animals/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"3",
+								"animals",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "content-length",
+							"value": "91"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 19 Jun 2020 07:36:08 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "x-request-id",
+							"value": "FhnhwnNUccDg5Y8AAAPB"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"patrick\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"hendrik\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"derde test\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "final get all animals",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "animal[id]",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:4000/api/users/3/animals/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"3",
+								"animals",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "cache-control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "content-length",
+							"value": "91"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "date",
+							"value": "Fri, 19 Jun 2020 07:36:08 GMT"
+						},
+						{
+							"key": "server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "x-request-id",
+							"value": "FhnhwnNUccDg5Y8AAAPB"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"patrick\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"hendrik\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"derde test\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}

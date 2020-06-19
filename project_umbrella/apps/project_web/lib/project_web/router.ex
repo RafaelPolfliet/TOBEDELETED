@@ -26,10 +26,13 @@ defmodule ProjectWeb.Router do
     plug Guardian.Plug.EnsureAuthenticated
   end
 
-  pipeline :api_auth do
-    plug ProjectWeb.Plugs.ApiKeyPlug
+  pipeline :api_auth_write do
+    plug ProjectWeb.Plugs.ApiKeyPlug, true
   end
 
+  pipeline :api_auth_non_write do
+    plug ProjectWeb.Plugs.ApiKeyPlug, false
+  end
 
   pipeline :api do
     plug :accepts, ["json"]
@@ -74,11 +77,19 @@ defmodule ProjectWeb.Router do
   end
 
   scope "/api", ProjectWeb do
-    pipe_through [:api, :api_auth]
-
+    pipe_through [:api, :api_auth_non_write]
 
     resources "/users", UserController, only: [] do
-      resources "/animals", AnimalController, only: [:index,:show,:create,:update,:delete]
+      resources "/animals", AnimalController, only: [:index,:show]
+    end
+  end
+
+
+  scope "/api", ProjectWeb do
+    pipe_through [:api, :api_auth_write]
+
+    resources "/users", UserController, only: [] do
+      resources "/animals", AnimalController, only: [:create,:update,:delete]
     end
   end
 

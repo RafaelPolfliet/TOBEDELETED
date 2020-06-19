@@ -2,13 +2,18 @@ use Mix.Config
 
 # Configure your database
 config :project, Project.Repo,
-  username: "51bWT4p6NS",
-  password: "OMS5xuZuiV",
-  database: "51bWT4p6NS",
-  hostname: "remotemysql.com",
+#  username: "51bWT4p6NS",
+#  password: "OMS5xuZuiV",
+#  database: "51bWT4p6NS",
+#  hostname: "remotemysql.com",
   show_sensitive_data_on_connection_error: true,
-  pool_size: 5
-
+  pool_size: 5,
+  username: "user",
+  password: "t",
+  database: "deb",
+  hostname: "localhost"
+  
+  
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
